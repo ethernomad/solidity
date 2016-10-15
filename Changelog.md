@@ -4,6 +4,7 @@ Features:
 
  * Inline assembly: support both `sucide` and `selfdestruct` opcodes
    (note: `suicide` is deprecated)
+ * Inline assembly: issue warning if stack is not balanced after block.
  * Include `keccak256()` as an alias to `sha3()`
 
 Bugfixes:
