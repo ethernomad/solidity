@@ -1288,7 +1288,7 @@ string ContractType::canonicalName(bool) const
 	return m_contract.annotation().canonicalName;
 }
 
-MemberList::MemberMap ContractType::nativeMembers(ContractDefinition const*) const
+MemberList::MemberMap ContractType::nativeMembers(ContractDefinition const* _current) const
 {
 	// All address members and all interface functions
 	MemberList::MemberMap members(IntegerType(120, IntegerType::Modifier::Address).nativeMembers(nullptr));
@@ -1296,6 +1296,9 @@ MemberList::MemberMap ContractType::nativeMembers(ContractDefinition const*) con
 	{
 		// add the most derived of all functions which are visible in derived contracts
 		for (ContractDefinition const* base: m_contract.annotation().linearizedBaseContracts)
+		{
+			if (base == _current)
+				continue;
 			for (FunctionDefinition const* function: base->definedFunctions())
 			{
 				if (!function->isVisibleInDerivedContracts())
@@ -1320,6 +1323,7 @@ MemberList::MemberMap ContractType::nativeMembers(ContractDefinition const*) con
 						function
 					));
 			}
+		}
 	}
 	else if (!m_contract.isLibrary())
 	{
