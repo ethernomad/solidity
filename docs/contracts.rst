@@ -553,9 +553,9 @@ not possible to filter for specific anonymous events by name.
 All non-indexed arguments will be stored in the data part of the log.
 
 .. note::
-    Indexed arguments will not be stored themselves, you can only
-    search for the values, but it is impossible to retrieve the
-    values themselves.
+    Indexed array arguments (including ``string`` and ``bytes``) will not be
+    stored themselves, you can only search for the values, but it is impossible
+    to retrieve the values themselves.
 
 ::
 
