@@ -73,7 +73,7 @@ and it does something else afterwards.
   defined using the ``receive`` keyword.
 
   * If present, the receive ether function is called whenever the call data is empty (whether
-    or not ether is received). This function is implicitly ``payable``.
+    or not ether is received). This function must be ``payable``.
 
   * The new fallback function is called when no other function matches (if the receive ether
     function does not exist then this includes calls with empty call data).
